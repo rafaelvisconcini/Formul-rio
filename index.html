@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 30px 15px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: blueviolet;
+        }
+
+        form {
+            width: 100%;
+            max-width: 640px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color:black;
+            margin: 0 0 25px;
+        }
+
+        
+        .grade {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 20px;
+        }
+
+        .campo label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fafafa;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: black;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.25);
+        }
+
+        input[type="checkbox"]:focus,
+        input[type="file"]:focus {
+            box-shadow: none;
+            outline: 2px solid black;
+            outline-offset: 2px;
+        }
+
+        fieldset {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: black;
+            padding: 0 6px;
+        }
+
+       
+        .opcoes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .opcao {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .opcao input {
+            width: 18px;
+            height: 18px;
+            accent-color: #4CAF50;
+            cursor: pointer;
+        }
+
+        .opcao label {
+            cursor: pointer;
+        }
+
+        .dica {
+            display: block;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        input[type="file"]:hover {
+            border-color: black;
+        }
+
+      
+        .botoes {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-enviar {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-limpar {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        
+        .btn-enviar:hover {
+            background-color: #388E3C;
+            transform: translateY(-2px);
+        }
+
+        .btn-limpar:hover {
+            background-color: #c9c9c9;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px 10px;
+            }
+
+            form {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .grade,
+            .opcoes {
+                grid-template-columns: 1fr;
+            }
+
+            .botoes {
+                flex-direction: column-reverse;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="processar_formulario.php" method="post" enctype="multipart/form-data">
+        <h1>Formulário de cadastro</h1>
+
+        <div class="grade">
+            <div class="campo">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="campo">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+
+            <div class="campo">
+                <label for="data_nascimento">Data de nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+            </div>
+
+            <div class="campo">
+                <label for="curso">Curso:</label>
+                <select id="curso" name="curso" required>
+                    <option value="">Selecione um curso</option>
+                    <option value="Informática">Informática</option>
+                    <option value="Ciência da computação">Ciência da computação</option>
+                    <option value="Engenharia de Software">Engenharia de Software</option>
+                    <option value="Ciência de Dados">Ciência de Dados</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo" required>
+                    <option value="">Informe seu sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                    <option value="Prefiro não informar">Prefiro não informar</option>
+                </select>
+            </div>
+        </div>
+
+        <fieldset>
+            <legend>Interesses:</legend>
+            <div class="opcoes">
+                <div class="opcao">
+                    <input type="checkbox" id="interesse1" name="interesses[]" value="Programação">
+                    <label for="interesse1">Programação</label>
+                </div>
+                <div class="opcao">
+                    <input type="checkbox" id="interesse2" name="interesses[]" value="Design">
+                    <label for="interesse2">Design</label>
+                </div>
+                <div class="opcao">
+                    <input type="checkbox" id="interesse3" name="interesses[]" value="Marketing">
+                    <label for="interesse3">Marketing</label>
+                </div>
+                <div class="opcao">
+                    <input type="checkbox" id="interesse4" name="interesses[]" value="Segurança da Informação">
+                    <label for="interesse4">Segurança da Informação</label>
+                </div>
+                <div class="opcao">
+                    <input type="checkbox" id="interesse5" name="interesses[]" value="Inteligência Aritificial">
+                    <label for="interesse5">Inteligência Aritificial</label>
+                </div>
+                <div class="opcao">
+                    <input type="checkbox" id="interesse6" name="interesses[]" value="Dinheiro">
+                    <label for="interesse6">Dinheiro</label>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Comentários:</legend>
+            <textarea id="comentarios" name="comentarios" rows="4" placeholder="Deixe seu comentário aqui!"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Fotos:</legend>
+            <label for="fotos" class="dica">Envie suas fotos (JPG, PNG ou WEBP):</label>
+            <input type="file" id="fotos" name="fotos[]" accept="image/png, image/jpeg, image/webp" multiple>
+        </fieldset>
+
+        <div class="botoes">
+            <button type="reset" class="btn-limpar">Limpar</button>
+            <button type="submit" class="btn-enviar">Enviar</button>
+        </div>
+    </form>
+</body>
+</html>
